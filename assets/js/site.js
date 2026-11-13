@@ -65,7 +65,7 @@
     s.setProperty('--ox', cx.toFixed(1) + 'px');
     s.setProperty('--oy', cy.toFixed(1) + 'px');
     // aperture ekranı tamamen geçene kadar gereken ölçek
-    esik._dollyMax = Math.max(w / aw, h / ah) * 2.1;
+    esik._dollyMax = Math.max(w / aw, h / ah) * 1.15; // ekranı doldurmaya yetecek kadar; fazlası Chrome'da dev katman çizdirip geri kaydırmada bozulmaya yol açıyordu
   }
   var lastEsik = -1;
   function renderEsik(p) {
