@@ -94,10 +94,10 @@ body { font-feature-settings: "ss01", "kern"; }
 .bar__nav a::after { content: ""; position: absolute; inset-inline: 0; bottom: .35rem; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease); }
 .bar__nav a:hover::after { transform: scaleX(1); }
 .bar__cta { min-height: 2.75rem; padding: .7rem 1.1rem; }
-/* Distribütör portalı: üst çubuğun rengini alan çerçeveli buton; dar ekranda kısa ad, telefonda yalnız simge */
-.bar__portal { min-height: 2.75rem; padding: .7rem 1.1rem; gap: .5rem; color: inherit; box-shadow: inset 0 0 0 1.5px currentColor; margin-inline-end: -1.2rem; }
-.bar__portal:hover { transform: translateY(-2px); background: color-mix(in oklab, currentColor 12%, transparent); }
-.bar__portal:focus-visible, .bar__cta:focus-visible { outline: 2px solid var(--sun); outline-offset: 3px; }
+/* Distribütör portalı: katalog butonu gibi sarı; dar ekranda kısa ad, telefonda yalnız simge */
+.bar__portal { min-height: 2.75rem; padding: .7rem 1.1rem; gap: .5rem; margin-inline-end: -1.2rem; }
+/* Sarı butonlarda odak: koyu ve açık üst çubukta görünen beyaz + lacivert çift halka */
+.bar__portal:focus-visible, .bar__cta:focus-visible { outline: none; box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--ink); }
 .bar__portal-ikon { flex: none; }
 .bar__portal-kisa { display: none; }
 .bar__mark, .bar__portal, .bar__cta { flex: none; }
