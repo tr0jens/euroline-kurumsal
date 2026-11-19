@@ -21,9 +21,8 @@ window.EUROLINE.i18n.en = {
   "bar.dil": "Language",
 
   "esik.baslik": "Open the window.",
-  "esik.ic_slogan": "Quality for a lifetime",
-  "esik.lead": "Euroline PVC door and window systems. We have made them in our own factory in Eskişehir since 2001.",
-  "esik.btn": "Explore the series",
+  "esik.ic_slogan": "Make room for a beautiful life.",
+  "esik.lead": "Since 2001, we have placed quality, aesthetics and reliability at the heart of our production, adding value to living spaces.",
   "esik.slogan": "Quality for a lifetime",
   "esik.dis_baslik": "The outside was always this close.",
   "esik.dis_lead": "A good window sets a boundary: it lets light through and leaves the cold and the noise at the door.",

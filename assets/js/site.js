@@ -46,7 +46,6 @@
   var esik = document.querySelector('[data-esik]');
   var esikAct = document.getElementById('acilis');
   var disMetin = document.querySelector('.esik__metin--dis');
-  var icBtn = document.querySelector('.esik__btn');
   // Hareket azaltıldığında dış metin hiç görünmez; slogan iç metinde başlığın altında zaten var.
   function layoutEsik() {
     if (!esik) return;
@@ -103,7 +102,6 @@
       disMetin.setAttribute('aria-hidden', d > 0.5 ? 'false' : 'true');
       var db = disMetin.querySelector('a'); if (db) db.tabIndex = d > 0.5 ? 0 : -1;
     }
-    if (icBtn) icBtn.tabIndex = (reduce || p < 0.2) ? 0 : -1;
   }
 
   // ---------- 2 · kelime vurgusu ----------

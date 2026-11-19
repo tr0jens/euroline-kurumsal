@@ -458,7 +458,7 @@ html[lang="ar"] .d, html[lang="ar"] .seri h3, html[lang="ar"] .olcu dt, html[lan
 .esik__metin--dis { opacity: var(--dis); transform: translateY(calc((1 - var(--dis)) * 28px)); max-width: min(46rem, 60vw); pointer-events: none; }
 .esik__metin--dis.is-on { pointer-events: auto; }
 .esik__metin--dis .lead { color: rgba(255, 255, 255, .9); }
-.esik__metin--dis .btn, .esik__btn { margin-top: 2rem; }
+.esik__metin--dis .btn { margin-top: 2rem; }
 /* Slogan: dış metinde başlığın üstünde tek satır (hareket azaltılınca iç metinde) */
 .esik__slogan {
   display: flex; align-items: center; gap: .9rem; margin: 0 0 1.25rem;
@@ -474,10 +474,11 @@ html[lang="ar"] .d, html[lang="ar"] .seri h3, html[lang="ar"] .olcu dt, html[lan
 .esik__alt-slogan {
   display: flex; align-items: center; justify-content: center; gap: .8rem; margin: .9rem 0 1.4rem; text-align: center;
   font-family: var(--sc-font-text); font-size: clamp(1rem, .7rem + 1.1vw, 1.65rem); font-weight: 600; line-height: 1.2;
-  letter-spacing: .22em; text-transform: uppercase; color: #fff;
+  letter-spacing: .12em; text-transform: uppercase; color: #fff;
   text-shadow: 0 1px 14px rgba(0, 0, 0, .5);
 }
-.esik__alt-slogan::before, .esik__alt-slogan::after { content: ""; flex: none; inline-size: 2.6rem; block-size: 2px; background: var(--sun); }
+.esik__alt-slogan::before, .esik__alt-slogan::after { content: ""; flex: none; inline-size: 1.8rem; block-size: 2px; background: var(--sun); }
+@media (max-width: 520px) { .esik__alt-slogan::before, .esik__alt-slogan::after { display: none; } }
 :lang(ar) .esik__alt-slogan { letter-spacing: 0; }
 .esik__scrim {
   position: absolute; inset: -40% -60% -50% -50%; z-index: -1;

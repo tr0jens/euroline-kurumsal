@@ -21,9 +21,8 @@ window.EUROLINE.i18n.tr = {
   "bar.dil": "Dil",
 
   "esik.baslik": "Pencereyi açın.",
-  "esik.ic_slogan": "YAŞAM BOYU KALİTE",
-  "esik.lead": "Euroline PVC kapı ve pencere sistemleri. Eskişehir'deki kendi fabrikamızda, 2001'den beri üretiyoruz.",
-  "esik.btn": "Serileri inceleyin",
+  "esik.ic_slogan": "GÜZEL BİR YAŞAMA YER AÇIN.",
+  "esik.lead": "2001’den beri kaliteyi, estetiği ve güveni üretimimizin merkezine alarak yaşam alanlarına değer katıyoruz.",
   "esik.slogan": "YAŞAM BOYU KALİTE",
   "esik.dis_baslik": "Dışarısı hep bu kadar yakındı.",
   "esik.dis_lead": "İyi bir pencere sınırı belirler: ışığı geçirir, soğuğu ve gürültüyü kapıda bırakır.",
