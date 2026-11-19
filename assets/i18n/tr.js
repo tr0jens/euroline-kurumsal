@@ -36,7 +36,7 @@ window.EUROLINE.i18n.tr = {
   "esik.dis_lead": "Her ayrıntısı konfor düşünülerek tasarlanan pencere sistemleriyle yaşam alanlarınıza değer katın.",
   "esik.dis_btn": "Profilin içine bakın",
 
-  "markalar.baslik": "Ürün Markalarımız",
+  "markalar.baslik": "Tescilli Markalarımız",
 
   "kesit.lead": "Euroline çiziminden kesit: kasa, kanat, cam çıtası ve contalar.",
   "kesit.genislik_dd": "Profil genişliği",

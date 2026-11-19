@@ -36,7 +36,7 @@ window.EUROLINE.i18n.en = {
   "esik.dis_lead": "Add value to your living spaces with window systems designed for comfort down to every detail.",
   "esik.dis_btn": "Look inside the profile",
 
-  "markalar.baslik": "Our Product Brands",
+  "markalar.baslik": "Our Registered Trademarks",
 
   "kesit.lead": "A cross-section from the Euroline drawing: frame, sash, glazing bead and gaskets.",
   "kesit.genislik_dd": "Profile width",
