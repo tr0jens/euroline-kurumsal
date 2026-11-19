@@ -28,6 +28,7 @@ window.EUROLINE.i18n.tr = {
   "esik.dis_lead": "İyi bir pencere sınırı belirler: ışığı geçirir, soğuğu ve gürültüyü kapıda bırakır.",
   "esik.dis_btn": "Profili inceleyin",
 
+  "markalar.baslik": "Markalarımız",
   "cumle.aria": "Bir pencerenin işi",
   "cumle.metin": "Kışın ısı içeride, yazın gürültü dışarıda kalır. Işık ise olduğu gibi geçer. Bir pencerenin bütün işi bu kadar sade, bu kadar zor.",
   "cumle.vurgu": "^(ısı|gürültü|ışık|Işık)",
@@ -155,6 +156,8 @@ window.EUROLINE.i18n.tr = {
   "plaka.hat_yazi": "Plaka hattının çıkışı: levhalar ölçüsünde kesilip masaya alınır.",
   "plaka.palet_alt": "Streçle sarılmış, beyaz ve mavi koruyucu filmli PVC plaka paletleri",
   "plaka.palet_yazi": "Sevkiyata hazır plakalar, yüzeyde koruyucu film.",
+  "plaka.video_alt": "Plaka hattından kısa video: beyaz PVC levha bant ve silindirler üzerinde ilerliyor",
+  "plaka.video_yazi": "Hat çalışırken: levha bant ve silindirlerden geçer.",
   "plaka.eylem_baslik": "Katalog ve teklif için yazın.",
   "plaka.eylem_wa": "WhatsApp ile yazın",
   "plaka.eylem_mail": "E-posta gönderin",

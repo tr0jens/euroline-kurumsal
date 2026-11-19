@@ -28,6 +28,7 @@ window.EUROLINE.i18n.en = {
   "esik.dis_lead": "A good window sets a boundary: it lets light through and leaves the cold and the noise at the door.",
   "esik.dis_btn": "Look at the profile",
 
+  "markalar.baslik": "Our brands",
   "cumle.aria": "What a window is for",
   "cumle.metin": "In winter the warmth stays in, in summer the noise stays out. The light, meanwhile, passes just as it is. A window's whole job is this simple, and this hard.",
   "cumle.vurgu": "^(warmth|noise|light|Light)",
@@ -155,6 +156,8 @@ window.EUROLINE.i18n.en = {
   "plaka.hat_yazi": "Sheet line outlet: sheets are cut to size and stacked on the table.",
   "plaka.palet_alt": "Stretch-wrapped pallets of PVC sheets with white and blue protective film",
   "plaka.palet_yazi": "Sheets ready for dispatch, protective film on the surface.",
+  "plaka.video_alt": "Short video of the sheet line: a white PVC sheet moving over belts and rollers",
+  "plaka.video_yazi": "The line running: the sheet travels over belts and rollers.",
   "plaka.eylem_baslik": "Write to us for a catalogue and a quotation.",
   "plaka.eylem_wa": "Write on WhatsApp",
   "plaka.eylem_mail": "Send an e-mail",

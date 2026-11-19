@@ -294,6 +294,19 @@
     try { window.dispatchEvent(new Event('resize')); } catch (e) { /* eski tarayıcı */ }
   });
 
+  // ---------- sessiz video döngüleri ----------
+  var donguler = document.querySelectorAll('video[data-dongu]');
+  if (donguler.length && !reduce && 'IntersectionObserver' in window) {
+    var vio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) { v.muted = true; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
+        else v.pause();
+      });
+    }, { threshold: 0.25 });
+    donguler.forEach(function (v) { vio.observe(v); });
+  }
+
   // ---------- katalog indirme ----------
   // claude.ai önizlemesinde sayfa doğrudan dosya indiremez; orada indirme
   // izni (downloads) üzerinden kaydederiz. Gerçek sitede bağlantı normal çalışır.

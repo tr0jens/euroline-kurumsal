@@ -633,6 +633,20 @@ html[lang="ar"] .d, html[lang="ar"] .seri h3, html[lang="ar"] .olcu dt, html[lan
 /* =========================================================
    6 · FABRİKA
    ========================================================= */
+/* ---------- Markalar: üç logo yan yana, eşit yükseklikte ---------- */
+.markalar { padding-block: clamp(3.5rem, 7vw, 6rem); background: var(--paper); border-bottom: 1px solid rgba(12, 39, 64, .08); }
+.markalar__baslik { margin: 0 0 clamp(1.8rem, 3.5vw, 2.8rem); text-align: center; font-family: var(--sc-font-text); font-size: .85rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+:lang(ar) .markalar__baslik { letter-spacing: 0; }
+.markalar__liste { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: center; }
+.markalar__liste li { display: flex; justify-content: center; align-items: center; padding: .5rem clamp(1rem, 3vw, 2.5rem); }
+.markalar__liste li + li { border-inline-start: 1px solid rgba(12, 39, 64, .14); }
+.markalar__liste img { display: block; width: auto; height: clamp(2.6rem, 1.6rem + 2.4vw, 4.2rem); max-width: 100%; object-fit: contain; }
+@media (max-width: 560px) {
+  .markalar__liste { grid-template-columns: 1fr; gap: 1.6rem; }
+  .markalar__liste li + li { border-inline-start: 0; border-top: 1px solid rgba(12, 39, 64, .14); padding-top: 1.8rem; }
+  .markalar__liste img { height: 3rem; }
+}
+
 .fabrika { padding-block: clamp(6rem, 12vw, 11rem); background: var(--paper); }
 .fabrika__ust { display: grid; grid-template-columns: 6fr 5fr; gap: clamp(2rem, 6vw, 7rem); align-items: start; }
 .fabrika__ust .lead { padding-top: .6rem; }
@@ -798,10 +812,12 @@ html[lang="ar"] .d, html[lang="ar"] .seri h3, html[lang="ar"] .olcu dt, html[lan
 .plaka__say { margin: 0; display: grid; gap: .5rem; color: var(--ink-soft); }
 .plaka__say-n { font-family: var(--sc-font-display); font-size: clamp(3.6rem, 2rem + 6vw, 8rem); line-height: .92; letter-spacing: -.02em; color: var(--ink); font-variant-numeric: tabular-nums; }
 
-.plaka__foto { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2.5vw, 2rem); margin: clamp(2.5rem, 5vw, 4.5rem) 0 0; }
+.plaka__foto { display: grid; grid-template-columns: 1fr .375fr 1fr; gap: clamp(1rem, 2.5vw, 2rem); margin: clamp(2.5rem, 5vw, 4.5rem) 0 0; }
 .plaka__foto figure { margin: 0; }
 .plaka__foto img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; background: var(--surface); }
 .plaka__foto figcaption { margin-top: .7rem; font-size: .9rem; color: var(--ink-soft); max-width: 44ch; }
+/* Hattan sessiz döngü: dikey video, iki fotoğrafla aynı yükseklikte */
+.plaka__video video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; background: var(--surface); }
 
 .plaka__olcu { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem clamp(1.5rem, 3vw, 2.5rem); margin: clamp(2.5rem, 5vw, 4rem) 0 0; }
 .plaka__olcu > div { border-top: 1px solid color-mix(in oklab, var(--ink) 18%, transparent); padding-top: 1rem; }
@@ -862,6 +878,7 @@ html[lang="ar"] .d, html[lang="ar"] .seri h3, html[lang="ar"] .olcu dt, html[lan
 }
 @media (max-width: 560px) {
   .plaka__foto { grid-template-columns: 1fr; }
+  .plaka__video { width: min(100%, 17rem); justify-self: center; }
   .plaka__eylem .btn { width: 100%; justify-content: center; }
   .plaka__eylem div { width: 100%; }
   .panel__olcu > div { grid-template-columns: 1fr; gap: .2rem; }
