@@ -51,8 +51,21 @@
     <a href="#iletisim" data-i18n="bar.iletisim">İletişim</a>
   </nav>
   <div class="bar__lang" role="group" aria-label="Dil" data-i18n-attr="aria-label:bar.dil" data-lang-switch></div>
-  <a class="btn btn--sun bar__cta" href="assets/docs/euroline-teknik-katalog-2024.pdf" download data-i18n="bar.katalog">Kataloğu indirin</a>
+  <a class="btn bar__portal" href="https://script.google.com/macros/s/AKfycbzusflpF7IuIGI0QnhGfC73wSR-eFLThzIZnKjPIlQi4r-e23TOP_AA5JA0IbywrQVJ/exec" target="_blank" rel="noopener" data-portal-ac aria-label="Distribütör sipariş portalı" data-i18n-attr="aria-label:bar.portal"><svg class="bar__portal-ikon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M9 4h6a1 1 0 0 1 1 1v1h2a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h2V5a1 1 0 0 1 1-1Zm0 2v1h6V6H9Zm-1 6h8m-8 4h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="bar__portal-uzun" data-i18n="bar.portal">Distribütör sipariş portalı</span><span class="bar__portal-kisa" aria-hidden="true" data-i18n="bar.portal_kisa">Sipariş</span></a>
+  <a class="btn btn--sun bar__cta" href="assets/docs/euroline-teknik-katalog-2024.pdf" download><span class="bar__cta-uzun" data-i18n="bar.katalog">Kataloğu indirin</span><span class="bar__cta-kisa" data-i18n="bar.katalog_kisa">Katalog</span></a>
 </header>
+
+<!-- Distribütör sipariş portalı: Google Apps Script uygulaması sayfanın içinde açılır -->
+<dialog class="portal" id="siparis" aria-labelledby="portal-baslik" data-portal data-portal-src="https://script.google.com/macros/s/AKfycbzusflpF7IuIGI0QnhGfC73wSR-eFLThzIZnKjPIlQi4r-e23TOP_AA5JA0IbywrQVJ/exec">
+  <div class="portal__ust">
+    <h2 id="portal-baslik" class="portal__baslik" data-i18n="portal.baslik">Distribütör sipariş portalı</h2>
+    <a class="portal__yeni" href="https://script.google.com/macros/s/AKfycbzusflpF7IuIGI0QnhGfC73wSR-eFLThzIZnKjPIlQi4r-e23TOP_AA5JA0IbywrQVJ/exec" target="_blank" rel="noopener" data-i18n="portal.yeni_sekme">Yeni sekmede aç</a>
+    <button type="button" class="portal__kapat" data-portal-kapat aria-label="Kapat" data-i18n-attr="aria-label:portal.kapat"><span aria-hidden="true">×</span></button>
+  </div>
+  <div class="portal__govde">
+    <p class="portal__bekle" data-i18n="portal.yukleniyor">Portal yükleniyor…</p>
+  </div>
+</dialog>
 
 <main id="top">
 

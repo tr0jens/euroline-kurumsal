@@ -94,6 +94,14 @@ body { font-feature-settings: "ss01", "kern"; }
 .bar__nav a::after { content: ""; position: absolute; inset-inline: 0; bottom: .35rem; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease); }
 .bar__nav a:hover::after { transform: scaleX(1); }
 .bar__cta { min-height: 2.75rem; padding: .7rem 1.1rem; }
+/* Distribütör portalı: üst çubuğun rengini alan çerçeveli buton; dar ekranda kısa ad, telefonda yalnız simge */
+.bar__portal { min-height: 2.75rem; padding: .7rem 1.1rem; gap: .5rem; color: inherit; box-shadow: inset 0 0 0 1.5px currentColor; margin-inline-end: -1.2rem; }
+.bar__portal:hover { transform: translateY(-2px); background: color-mix(in oklab, currentColor 12%, transparent); }
+.bar__portal:focus-visible, .bar__cta:focus-visible { outline: 2px solid var(--sun); outline-offset: 3px; }
+.bar__portal-ikon { flex: none; }
+.bar__portal-kisa { display: none; }
+.bar__mark, .bar__portal, .bar__cta { flex: none; }
+.bar__cta-kisa { display: none; }
 .bar__lang { margin-inline-start: 1.4rem; font-size: .9rem; letter-spacing: .04em; white-space: nowrap; }
 .bar__lang button { all: unset; cursor: pointer; padding: .55rem .3rem; min-height: 1.5rem; opacity: .62; transition: opacity .25s var(--ease); }
 .bar__lang button:hover { opacity: 1; }
@@ -686,6 +694,9 @@ html[lang="ar"] .d, html[lang="ar"] .seri h3, html[lang="ar"] .olcu dt, html[lan
    ========================================================= */
 @media (max-width: 960px) {
   .bar__nav { display: none; }
+  .bar__portal-uzun { display: none; }
+  .bar__portal-kisa { display: inline; }
+  .bar__portal { margin-inline-end: -1.2rem; padding-inline: .9rem; }
   .bar__lang { margin-inline-start: auto; }
   .bar__cta { margin-inline-start: .9rem; }
   .kesit__grid, .seriler__grid, .renkler__grid, .fabrika__ust { grid-template-columns: 1fr; }
@@ -709,6 +720,11 @@ html[lang="ar"] .d, html[lang="ar"] .seri h3, html[lang="ar"] .olcu dt, html[lan
   :root { --bar-h: 4rem; }
   .bar__mark img { height: 1.7rem; }
   .bar__cta { padding: .6rem .9rem; font-size: .92rem; min-height: 2.75rem; }
+  .bar { gap: .6rem; }
+  .bar__lang { margin-inline-end: .2rem; }
+  .bar__portal { padding: 0; width: 2.75rem; justify-content: center; margin-inline-end: 0; }
+  .bar__portal-kisa { display: none; }
+  .bar__cta { margin-inline-start: 0; }
   .numuneler fieldset { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .kapanis__eylem .btn { width: 100%; justify-content: center; }
   .seriler h2.d--lg { font-size: 2.3rem; }
@@ -885,3 +901,30 @@ html[lang="ar"] .d, html[lang="ar"] .seri h3, html[lang="ar"] .olcu dt, html[lan
   .katman { transition: none; }
   .panel__sema { --ara: 26px; }
 }
+
+/* ---------- Distribütör sipariş portalı (iframe penceresi) ---------- */
+.portal {
+  width: min(64rem, calc(100vw - 2rem)); height: min(56rem, calc(100dvh - 2rem)); max-width: none; max-height: none;
+  padding: 0; border: 0; border-radius: 14px; overflow: hidden; background: var(--paper); color: var(--ink);
+  box-shadow: 0 40px 90px -30px rgba(7, 26, 44, .6);
+}
+.portal[open] { display: flex; flex-direction: column; animation: portal-ac .35s var(--ease); }
+.portal:focus, .portal:focus-visible { outline: none; }
+.portal::backdrop { background: rgba(7, 26, 44, .55); backdrop-filter: blur(4px); }
+@keyframes portal-ac { from { opacity: 0; transform: translateY(16px) scale(.985); } }
+.portal__ust { display: flex; align-items: center; gap: 1rem; padding: .7rem .8rem .7rem 1.3rem; border-bottom: 1px solid color-mix(in oklab, var(--ink) 12%, transparent); }
+.portal__baslik { margin: 0; font: 600 1rem/1.2 var(--sc-font-text); }
+.portal__yeni { margin-inline-start: auto; font-size: .9rem; color: var(--ink); text-underline-offset: .25em; }
+.portal__kapat { all: unset; cursor: pointer; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 999px; font-size: 1.7rem; line-height: 1; }
+.portal__kapat:hover { background: color-mix(in oklab, var(--ink) 8%, transparent); }
+.portal__kapat:focus-visible, .portal__yeni:focus-visible { outline: 2px solid var(--sun); outline-offset: 2px; }
+.portal__govde { position: relative; flex: 1; background: #fff; }
+.portal__bekle { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; color: var(--ink-soft); font-size: .95rem; }
+.portal__govde iframe { position: relative; display: block; width: 100%; height: 100%; border: 0; background: transparent; }
+@media (max-width: 560px) {
+  .portal { width: 100vw; height: 100dvh; border-radius: 0; }
+  .portal__baslik { font-size: .92rem; }
+}
+@media (prefers-reduced-motion: reduce) { .portal[open] { animation: none; } }
+/* Çok dar telefonda katalog butonu kısa adıyla */
+@media (max-width: 400px) { .bar__cta-uzun { display: none; } .bar__cta-kisa { display: inline; } }

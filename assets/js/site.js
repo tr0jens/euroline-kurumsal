@@ -320,6 +320,38 @@
     }
   }
 
+  // ---------- distribütör sipariş portalı ----------
+  // Apps Script uygulaması bir <dialog> içindeki iframe'de açılır; iframe ilk açılışta yüklenir.
+  // #siparis adresiyle doğrudan açılır. JS yoksa buton uygulamayı yeni sekmede açar.
+  var portal = document.querySelector('[data-portal]');
+  if (portal && typeof portal.showModal === 'function') {
+    var portalGovde = portal.querySelector('.portal__govde');
+    var portalAc = function () {
+      if (!portal.querySelector('iframe')) {
+        var f = document.createElement('iframe');
+        f.src = portal.getAttribute('data-portal-src');
+        f.title = dil ? dil.t('portal.iframe') : 'Euroline distribütör sipariş uygulaması';
+        f.setAttribute('allow', 'clipboard-write; web-share');
+        f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+        portalGovde.appendChild(f);
+      }
+      if (!portal.open) portal.showModal();
+      if (lenis) lenis.stop();
+      if (location.hash !== '#siparis') history.replaceState(null, '', '#siparis');
+    };
+    portal.addEventListener('close', function () {
+      if (lenis) lenis.start();
+      if (location.hash === '#siparis') history.replaceState(null, '', location.pathname + location.search);
+    });
+    portal.querySelector('[data-portal-kapat]').addEventListener('click', function () { portal.close(); });
+    // Pencerenin dışına (karartılmış zemine) tıklayınca kapanır
+    portal.addEventListener('click', function (e) { if (e.target === portal) portal.close(); });
+    document.querySelectorAll('[data-portal-ac]').forEach(function (a) {
+      a.addEventListener('click', function (e) { e.preventDefault(); portalAc(); });
+    });
+    if (location.hash === '#siparis') portalAc();
+  }
+
   // ---------- dil değişimi ----------
   // i18n.js metinleri yazar; burada yalnızca JS'in kurduğu parçalar (teklif bağlantıları, sayı biçimi) yenilenir.
   document.addEventListener('euroline:lang', function () {
