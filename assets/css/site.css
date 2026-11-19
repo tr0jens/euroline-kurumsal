@@ -473,8 +473,8 @@ html[lang="ar"] .d, html[lang="ar"] .seri h3, html[lang="ar"] .olcu dt, html[lan
 .esik__baslik-blok { display: inline-flex; flex-direction: column; align-items: center; max-inline-size: 100%; }
 .esik__alt-slogan {
   display: flex; align-items: center; justify-content: center; gap: .8rem; margin: .9rem 0 1.4rem; text-align: center;
-  font-family: var(--sc-font-text); font-size: clamp(1rem, .7rem + 1.1vw, 1.65rem); font-weight: 600; line-height: 1.2;
-  letter-spacing: .12em; text-transform: uppercase; color: #fff;
+  font-family: var(--sc-font-text); font-size: clamp(.95rem, .6rem + .9vw, 1.3rem); font-weight: 600; line-height: 1.2;
+  letter-spacing: .1em; text-transform: uppercase; color: #fff;
   text-shadow: 0 1px 14px rgba(0, 0, 0, .5);
 }
 .esik__alt-slogan::before, .esik__alt-slogan::after { content: ""; flex: none; inline-size: 1.8rem; block-size: 2px; background: var(--sun); }

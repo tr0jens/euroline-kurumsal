@@ -21,10 +21,10 @@ window.EUROLINE.i18n.tr = {
   "bar.dil": "Dil",
 
   "esik.baslik": "Pencereyi açın.",
-  "esik.ic_slogan": "GÜZEL BİR YAŞAMA YER AÇIN.",
+  "esik.ic_slogan": "GÜZEL GÜNLER PENCEREDEN BAŞLAR.",
   "esik.lead": "2001’den beri kaliteyi, estetiği ve güveni üretimimizin merkezine alarak yaşam alanlarına değer katıyoruz.",
-  "esik.slogan": "YAŞAM BOYU KALİTE",
-  "esik.dis_baslik": "Dışarısı hep bu kadar yakındı.",
+  "esik.slogan": "YILLARCA İLK GÜNKÜ GİBİ",
+  "esik.dis_baslik": "Dünya bir kanat ötede.",
   "esik.dis_lead": "İyi bir pencere sınırı belirler: ışığı geçirir, soğuğu ve gürültüyü kapıda bırakır.",
   "esik.dis_btn": "Profili inceleyin",
 
@@ -111,7 +111,7 @@ window.EUROLINE.i18n.tr = {
   "fabrika.tse_ac": "Taze malzeme · sınıf S / I / A · “G” işareti (Sistem 1+) · 25.07.2027'ye kadar geçerli",
   "fabrika.pdf": "PDF",
 
-  "kapanis.slogan": "YAŞAM BOYU KALİTE",
+  "kapanis.slogan": "YILLARCA İLK GÜNKÜ GİBİ",
   "kapanis.baslik": "Ölçünüzü konuşalım.",
   "kapanis.lead": "Teknik kataloğu indirin, projenize uygun seriyi birlikte seçelim.",
   "kapanis.katalog": "Kataloğu indirin",

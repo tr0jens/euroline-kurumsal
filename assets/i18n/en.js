@@ -21,10 +21,10 @@ window.EUROLINE.i18n.en = {
   "bar.dil": "Language",
 
   "esik.baslik": "Open the window.",
-  "esik.ic_slogan": "Make room for a beautiful life.",
+  "esik.ic_slogan": "Good days begin at the window.",
   "esik.lead": "Since 2001, we have placed quality, aesthetics and reliability at the heart of our production, adding value to living spaces.",
-  "esik.slogan": "Quality for a lifetime",
-  "esik.dis_baslik": "The outside was always this close.",
+  "esik.slogan": "Like new, year after year",
+  "esik.dis_baslik": "The world is just a window away.",
   "esik.dis_lead": "A good window sets a boundary: it lets light through and leaves the cold and the noise at the door.",
   "esik.dis_btn": "Look at the profile",
 
@@ -111,7 +111,7 @@ window.EUROLINE.i18n.en = {
   "fabrika.tse_ac": "Virgin material · class S / I / A · “G” mark (System 1+) · valid until 25.07.2027",
   "fabrika.pdf": "PDF",
 
-  "kapanis.slogan": "Quality for a lifetime",
+  "kapanis.slogan": "Like new, year after year",
   "kapanis.baslik": "Let's talk about your measurements.",
   "kapanis.lead": "Download the technical catalogue and let's choose the right series for your project together.",
   "kapanis.katalog": "Download the catalogue",
