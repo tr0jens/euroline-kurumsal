@@ -130,29 +130,100 @@
       }
     }
     if (!reduce) imgs[0].style.transform = 'scale(' + (1.08 - Math.min(t, 1) * 0.08).toFixed(4) + ')';
-    // pencere: fotoğraf oturunca iki yana açılır, sonraki seriden önce kapanır
-    if (seriPencere) {
-      var k0 = Math.round(t), o = 0;
-      if (!reduce) {
-        var x = t - k0;
-        o = k0 >= N - 1 ? easeInOut(seg(t, N - 1.12, N - 1)) : easeInOut(Math.max(0, 1 - Math.abs(x - 0.12) / 0.26));
-      }
-      var surme = k0 >= SURME - 0.5;
-      seriPencere.classList.toggle('pp--surme', surme);
-      var ps = seriPencere.style;
-      if (surme) { ps.setProperty('--kay', o.toFixed(3)); ps.setProperty('--ac-sol', '0deg'); ps.setProperty('--ac-sag', '0deg'); ps.setProperty('--kolt', '0'); }
-      else {
-        var kolt = Math.min(1, o * 3.5), ac = easeInOut(seg(o, 0.25, 1));
-        ps.setProperty('--kolt', kolt.toFixed(3)); ps.setProperty('--kay', '0');
-        ps.setProperty('--ac-sol', (ac * -58).toFixed(2) + 'deg'); ps.setProperty('--ac-sag', (ac * -58).toFixed(2) + 'deg');
-      }
-    }
     if (idx !== curSeri) {
       curSeri = idx;
       for (var i = 0; i < panels.length; i++) panels[i].classList.toggle('on', i === idx);
       for (var j = 0; j < items.length; j++) items[j].classList.toggle('on', j === idx);
+      pencereGit(idx, false);
     }
   }
+
+  // Seri penceresi: kaydırmadan bağımsız, zamanlı hareket. Seri değişince pencere kapanır,
+  // kapalıyken o serinin rengini alır, sonra kol döner ve kanatlar hafif bir salınımla açılır.
+  // Sürline'da sağ kanat kayar. Renk: listedeki li'nin data-renk değeri.
+  var seriKasa = seriler ? seriler.querySelector('[data-seri-pencere]') : null;
+  var pen = { o: 0, hedef: -1, gosterilen: -1, tekrar: false, adim: null, gorunur: false };
+  var KAPAN_MS = 650, AC_MS = 1700, BEKLE_MS = 180;
+  // Açılış eğrisi: yumuşak başlar, sürenin %72'sinde %3,5 öteye salınır, kalan sürede yerine oturur
+  var acEgri = function (k) { return k < .72 ? easeInOut(k / .72) * 1.035 : 1.035 - .035 * easeInOut((k - .72) / .28); };
+  function pencereGit(i, tekrar) {
+    if (!seriPencere) return;
+    pen.hedef = i;
+    if (tekrar && i === pen.gosterilen) pen.tekrar = true;
+    if (pen.adim && pen.adim.tip === 'ac' && (pen.hedef !== pen.gosterilen || pen.tekrar)) pen.adim = null; // açılırken yarıda kapanmaya geçer
+  }
+  function pencereUygula(o) {
+    var ps = seriPencere.style;
+    if (seriPencere.classList.contains('pp--surme')) {
+      ps.setProperty('--kay', Math.min(o, 1.03).toFixed(4)); ps.setProperty('--ac-sol', '0deg'); ps.setProperty('--ac-sag', '0deg'); ps.setProperty('--kolt', '0');
+      return;
+    }
+    // Önce kol döner (o: 0–0,22), sonra kanatlar açılır; sağ kanat bir tık geriden gelir
+    var kolt = yay(clamp(o / 0.22, 0, 1));
+    var acSol = Math.max(0, (o - 0.22) / 0.78), acSag = Math.max(0, (o - 0.28) / 0.72);
+    ps.setProperty('--kolt', kolt.toFixed(3)); ps.setProperty('--kay', '0');
+    ps.setProperty('--ac-sol', (acSol * -58).toFixed(2) + 'deg'); ps.setProperty('--ac-sag', (acSag * -58).toFixed(2) + 'deg');
+  }
+  function seriGiydir(i) {
+    var li = items[i];
+    seriKasa.setAttribute('data-renk', (li && li.getAttribute('data-renk')) || 'beyaz');
+    seriPencere.classList.toggle('pp--surme', i === SURME);
+    pen.gosterilen = i;
+  }
+  function pencereTick(now) {
+    if (!seriPencere || pen.hedef < 0) return;
+    var a = pen.adim;
+    if (reduce) { // hareket yok: renk değişir, pencere kapalı kalır
+      if (pen.gosterilen !== pen.hedef) { seriGiydir(pen.hedef); pencereUygula(0); }
+      return;
+    }
+    if (!a) {
+      var degisecek = pen.gosterilen !== pen.hedef || pen.tekrar;
+      if (degisecek && pen.o > 0.001) a = pen.adim = { tip: 'kapan', t0: now, bas: pen.o };
+      else if (degisecek || (pen.o < 0.999 && pen.gorunur)) {
+        if (!pen.gorunur) { if (pen.gosterilen !== pen.hedef) seriGiydir(pen.hedef); pencereUygula(0); return; }
+        seriGiydir(pen.hedef); pen.tekrar = false;
+        a = pen.adim = { tip: 'ac', t0: now + BEKLE_MS, bas: pen.o };
+      } else return;
+    }
+    if (a.tip === 'kapan') {
+      var kk = clamp((now - a.t0) / (KAPAN_MS * Math.max(a.bas, 0.35)), 0, 1);
+      pen.o = a.bas * (1 - easeInOut(kk));
+      if (kk >= 1) { pen.o = 0; pen.adim = null; }
+    } else {
+      var ka = clamp((now - a.t0) / (AC_MS * (1 - a.bas)), 0, 1);
+      pen.o = a.bas + (1 - a.bas) * acEgri(ka);
+      if (ka >= 1) { pen.o = 1; pen.adim = null; }
+    }
+    pencereUygula(pen.o);
+  }
+  if (seriKasa) {
+    // Ekrandan çıkınca kapanır; geri gelince yeniden açılır
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          pen.gorunur = e.isIntersecting;
+          if (!e.isIntersecting && seriPencere) { pen.adim = null; pen.o = 0; pencereUygula(0); }
+        });
+      }, { threshold: 0.35 }).observe(seriKasa);
+    } else pen.gorunur = true;
+    // Pencereye dokununca aynı seri kapanıp yeniden açılır
+    seriKasa.addEventListener('click', function () { if (curSeri >= 0) pencereGit(curSeri, true); });
+  }
+  // Listeden seri seçimi: o serinin kaydırma aralığına gider, pencere kapanıp yeni renkte açılır
+  function seriyeGit(i) {
+    if (!serilerAct) return;
+    var p = 0.06 + 0.86 * (i + 0.2) / (N - 1);
+    if (i === 0) p = 0.02;
+    var y = serilerAct.offsetTop + (serilerAct.offsetHeight - innerHeight) * Math.min(p, 0.97);
+    if (i === curSeri) pencereGit(i, true);
+    if (lenis) lenis.scrollTo(y, { duration: 1.1 });
+    else window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+  }
+  Array.prototype.forEach.call(items, function (li, i) {
+    var b = li.querySelector('button');
+    if (b) b.addEventListener('click', function () { seriyeGit(i); });
+  });
 
   // ---------- 7 · kapanış güneşi ----------
   var kapanis = document.querySelector('[data-kapanis]');
@@ -182,6 +253,7 @@
   function tick() {
     if (esikAct) renderEsik(readP(esikAct));
     if (serilerAct) renderSeriler(readP(serilerAct));
+    pencereTick(performance.now());
     if (kapanisAct) renderKapanis(readP(kapanisAct));
     renderBar();
     requestAnimationFrame(tick);

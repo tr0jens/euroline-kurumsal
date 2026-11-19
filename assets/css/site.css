@@ -605,16 +605,16 @@ html[lang="ar"] .d, html[lang="ar"] .seri h3, html[lang="ar"] .olcu dt, html[lan
 .numune[value="black-brown"] { --t: url(../img/folyo/black-brown-n.webp); }
 .numune[value="cool-teak"] { --t: url(../img/folyo/cool-teak-n.webp); }
 .numune[value="anteak-oak"] { --t: url(../img/folyo/anteak-oak-n.webp); }
-.renkler__ornek[data-renk="beyaz"] { --doku: url(../img/folyo/beyaz.webp); }
-.renkler__ornek[data-renk="jet-black"] { --doku: url(../img/folyo/jet-black.webp); }
-.renkler__ornek[data-renk="antrasit-gri"] { --doku: url(../img/folyo/antrasit-gri.webp); }
-.renkler__ornek[data-renk="altin-mese"] { --doku: url(../img/folyo/altin-mese.webp); }
-.renkler__ornek[data-renk="walnut"] { --doku: url(../img/folyo/walnut.webp); }
-.renkler__ornek[data-renk="maun"] { --doku: url(../img/folyo/maun.webp); }
-.renkler__ornek[data-renk="sunset-grey"] { --doku: url(../img/folyo/sunset-grey.webp); }
-.renkler__ornek[data-renk="black-brown"] { --doku: url(../img/folyo/black-brown.webp); }
-.renkler__ornek[data-renk="cool-teak"] { --doku: url(../img/folyo/cool-teak.webp); }
-.renkler__ornek[data-renk="anteak-oak"] { --doku: url(../img/folyo/anteak-oak.webp); }
+[data-renk="beyaz"] { --doku: url(../img/folyo/beyaz.webp); }
+[data-renk="jet-black"] { --doku: url(../img/folyo/jet-black.webp); }
+[data-renk="antrasit-gri"] { --doku: url(../img/folyo/antrasit-gri.webp); }
+[data-renk="altin-mese"] { --doku: url(../img/folyo/altin-mese.webp); }
+[data-renk="walnut"] { --doku: url(../img/folyo/walnut.webp); }
+[data-renk="maun"] { --doku: url(../img/folyo/maun.webp); }
+[data-renk="sunset-grey"] { --doku: url(../img/folyo/sunset-grey.webp); }
+[data-renk="black-brown"] { --doku: url(../img/folyo/black-brown.webp); }
+[data-renk="cool-teak"] { --doku: url(../img/folyo/cool-teak.webp); }
+[data-renk="anteak-oak"] { --doku: url(../img/folyo/anteak-oak.webp); }
 .numune { width: 2.4rem; height: 2.4rem; border-radius: 6px; flex: none; background: var(--t) center / cover; box-shadow: inset 0 0 0 1px rgba(0,0,0,.18); }
 .numuneler input:checked { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--ink); }
 .numuneler input:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--sun); }
@@ -741,25 +741,25 @@ html[lang="ar"] .d, html[lang="ar"] .seri h3, html[lang="ar"] .olcu dt, html[lan
 .pp .kanat__karanlik { border-color: rgba(255,255,255,.16) rgba(0,0,0,.07) rgba(0,0,0,.17) rgba(255,255,255,.07); }
 .pp .kanat__kol i { transform: rotate(0deg); }
 /* Laminasyon: seçilen folyo profillere kaplanır */
-.renkler__ornek .pp :is(.esik__kasa, .kanat__yuz, .kanat__cita) {
+:is(.renkler__ornek, .seriler__kasa:not([data-renk="beyaz"])) .pp :is(.esik__kasa, .kanat__yuz, .kanat__cita) {
   border-image-source: var(--doku); border-image-slice: 22%; border-image-repeat: round;
 }
-.renkler__ornek .pp .kanat__cita { filter: brightness(.94); }
-/* Renkli folyolarda menteşe kolla aynı mat siyah; beyazda beyaz kalır */
-.renkler__ornek:not([data-renk="beyaz"]) .pp .kanat__mentese {
+:is(.renkler__ornek, .seriler__kasa:not([data-renk="beyaz"])) .pp .kanat__cita { filter: brightness(.94); }
+/* Renkli folyolarda menteşe kolla aynı mat siyah; beyazda beyaz kalır (renkler ve seriler pencereleri) */
+:is(.renkler__ornek, .seriler__kasa):not([data-renk="beyaz"]) .pp .kanat__mentese {
   background: linear-gradient(90deg, #0d0e0f, #2a2c2f 45%, #111214);
   box-shadow: inset 0 0 0 .5px rgba(255,255,255,.08), 0 1px 3px rgba(0,0,0,.45);
 }
-.renkler__ornek:not([data-renk="beyaz"]) .pp .kanat__mentese::after { content: none; }
-/* Renkler penceresinin kolu: mat siyah, modern; ince dikdörtgen rozet, kare boyun, düz ince kol */
-.renkler__ornek .pp .kanat__kol {
+:is(.renkler__ornek, .seriler__kasa):not([data-renk="beyaz"]) .pp .kanat__mentese::after { content: none; }
+/* Renkler penceresinin ve renkli seri pencerelerinin kolu: mat siyah, modern; ince dikdörtgen rozet, kare boyun, düz ince kol */
+:is(.renkler__ornek, .seriler__kasa:not([data-renk="beyaz"])) .pp .kanat__kol {
   width: calc(var(--aw) * .024); height: calc(var(--aw) * .084);
   border-radius: calc(var(--aw) * .003);
   background: linear-gradient(90deg, #0d0e0f, #2a2c2f 45%, #111214);
   box-shadow: inset 0 0 0 .5px rgba(255,255,255,.08), inset 1px 1px 0 rgba(255,255,255,.07), 0 1px 2px rgba(0,0,0,.45), 0 3px 8px rgba(0,0,0,.22);
 }
-.renkler__ornek .pp .kanat__kol::after, .renkler__ornek .pp .kanat__kol i::after { content: none; }
-.renkler__ornek .pp .kanat__kol i {
+:is(.renkler__ornek, .seriler__kasa:not([data-renk="beyaz"])) .pp .kanat__kol::after, :is(.renkler__ornek, .seriler__kasa:not([data-renk="beyaz"])) .pp .kanat__kol i::after { content: none; }
+:is(.renkler__ornek, .seriler__kasa:not([data-renk="beyaz"])) .pp .kanat__kol i {
   --lw: calc(var(--aw) * .0135);
   top: 34%; width: var(--lw); height: calc(var(--aw) * .13);
   margin-left: calc(var(--lw) / -2); margin-top: calc(var(--lw) / -2);
@@ -768,7 +768,7 @@ html[lang="ar"] .d, html[lang="ar"] .seri h3, html[lang="ar"] .olcu dt, html[lan
   background: linear-gradient(90deg, #070808 0%, #26282b 22%, #3a3d41 48%, #1a1b1d 75%, #050606 100%);
   box-shadow: inset 0 0 0 .5px rgba(255,255,255,.06), 0 2px 4px rgba(0,0,0,.4), 0 6px 12px rgba(0,0,0,.2);
 }
-.renkler__ornek .pp .kanat__kol i::before {
+:is(.renkler__ornek, .seriler__kasa:not([data-renk="beyaz"])) .pp .kanat__kol i::before {
   content: ""; position: absolute; left: 50%; top: calc(var(--lw) / 2);
   width: calc(var(--aw) * .019); height: calc(var(--aw) * .019);
   transform: translate(-50%, -50%); border-radius: calc(var(--aw) * .0025);
@@ -792,6 +792,13 @@ html[lang="ar"] .d, html[lang="ar"] .seri h3, html[lang="ar"] .olcu dt, html[lan
 .pp--surme .kanat__kol { width: calc(var(--aw) * .016); height: calc(var(--aw) * .16); border-radius: calc(var(--aw) * .008); }
 .pp--surme .kanat__kol i { display: none; }
 .pp .kanat__mentese, .pp .kanat__kol { transition: opacity .3s var(--ease); }
+/* Renkli sürme pencerede kol: mat siyah ince çekme kolu (yukarıdaki döner kol ölçülerini ezer) */
+.seriler__kasa[data-renk] .pp.pp--surme .kanat__kol { width: calc(var(--aw) * .016); height: calc(var(--aw) * .16); border-radius: calc(var(--aw) * .008); }
+/* Seri listesi: tıklanabilir; pencereye dokununca kapanıp yeniden açılır */
+.seriler__liste button { all: unset; cursor: pointer; border-radius: 3px; }
+.seriler__liste button:hover { color: var(--ink); }
+.seriler__liste button:focus-visible { outline: 2px solid var(--sun); outline-offset: 3px; }
+.seriler__kasa { cursor: pointer; }
 
 /* =========================================================
    5b · PVC PLAKA  ·  5c · SANDVİÇ PANEL
