@@ -1,6 +1,6 @@
 /* Euroline · sayfanın kendi davranışları.
    Motor (scrollcraft.js) dokunulmadan kalır; bu dosya --sc-p değerini okuyup
-   imza hareketi (açılan pencere), kelime vurgusu, seri bölümleri, renk seçimi
+   imza hareketi (açılan pencere), seri bölümleri, renk seçimi
    ve sayaçları sürer. */
 (function () {
   'use strict';
@@ -104,41 +104,7 @@
     }
   }
 
-  // ---------- 2 · kelime vurgusu ----------
-  var kelime = document.querySelector('[data-kelime]');
-  var kelimeAct = kelime && kelime.closest('[data-sc-act]');
-  var words = [];
   var dil = window.EUROLINE && window.EUROLINE.lang;
-  // Cümleyi kelimelere böler; dil değişince yeniden kurulur (i18n metni düz yazıya çevirir).
-  function kelimeKur() {
-    if (!kelime) return;
-    var vurgu;
-    try { vurgu = new RegExp(dil ? dil.t('cumle.vurgu') : '^(ısı|gürültü|ışık|Işık)'); } catch (e) { vurgu = /^$/; }
-    var metin = kelime.textContent.trim();
-    var parts = metin.split(/\s+/);
-    kelime.setAttribute('aria-label', metin);
-    kelime.textContent = '';
-    words.length = 0;
-    parts.forEach(function (w, i) {
-      var sp = document.createElement('span');
-      sp.className = 'k' + (vurgu.test(w) ? ' vurgu' : '');
-      sp.setAttribute('aria-hidden', 'true');
-      sp.textContent = w;
-      kelime.appendChild(sp);
-      if (i < parts.length - 1) kelime.appendChild(document.createTextNode(' '));
-      words.push(sp);
-    });
-    lastK = -1;
-  }
-  var lastK = -1;
-  kelimeKur();
-  function renderKelime(p) {
-    if (!words.length) return;
-    var n = reduce ? words.length : Math.round(seg(p, 0.08, 0.78) * words.length);
-    if (n === lastK) return;
-    lastK = n;
-    for (var i = 0; i < words.length; i++) words[i].classList.toggle('on', i < n);
-  }
 
   // ---------- 4 · seriler ----------
   var seriler = document.querySelector('[data-seriler]');
@@ -215,7 +181,6 @@
   // ---------- tek döngü ----------
   function tick() {
     if (esikAct) renderEsik(readP(esikAct));
-    if (kelimeAct) renderKelime(readP(kelimeAct));
     if (serilerAct) renderSeriler(readP(serilerAct));
     if (kapanisAct) renderKapanis(readP(kapanisAct));
     renderBar();
@@ -284,9 +249,8 @@
   }
 
   // ---------- dil değişimi ----------
-  // i18n.js metinleri yazar; burada yalnızca JS'in kurduğu parçalar (kelime vurgusu, sayı biçimi) yenilenir.
+  // i18n.js metinleri yazar; burada yalnızca JS'in kurduğu parçalar (teklif bağlantıları, sayı biçimi) yenilenir.
   document.addEventListener('euroline:lang', function () {
-    kelimeKur();
     teklifKur();
     fmt = new Intl.NumberFormat(SAYI_DILI[dil.current()] || 'tr-TR');
     says.forEach(function (el) { el.textContent = fmt.format(parseFloat(el.getAttribute('data-say'))); });
