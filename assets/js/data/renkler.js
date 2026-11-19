@@ -5,7 +5,7 @@
     return { slug: slug, ad_key: ad_key, kod: kod, grup: grup, doku: A + slug + '.webp', numune: A + slug + '-n.webp' };
   }
   var R = [
-    r('beyaz', 'renkler.beyaz', 'WAQ50-2H', 'standart'),
+    r('beyaz', 'renkler.beyaz', null, 'standart'), // RAL 9016 düz beyaz: folyo yok, kod gösterilmez
     r('antrasit-gri', 'renkler.antrasit_gri', 'KDB74-Z8/07', 'standart'),
     r('altin-mese', 'renkler.altin_mese', 'G6001-U4/07', 'standart'),
     r('walnut', 'renkler.walnut', 'UK103-Z8', 'standart'),
